@@ -1,0 +1,23 @@
+{
+  "name": "echo-server",
+  "version": "1.0.0",
+  "description": "echo server example",
+  "main": "index.js",
+  "dependencies": {
+    "@types/express": "^4.17.13",
+    "express": "4.17.3"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arikhativa/echo-server.git"
+  },
+  "author": "arik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arikhativa/echo-server/issues"
+  },
+  "homepage": "https://github.com/arikhativa/echo-server#readme"
+}
