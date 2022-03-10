@@ -4,41 +4,47 @@ import express from "express";
 
 import IHandler from "./interface/baseHandler";
 
-import echoHandler from "./handler/echoHandler/echoHandler";
-import whoamiHandler from "./handler/whoamiHandler/whoamiHandler";
+import e from "./handler/echoHandler/echoHandler";
+// import whoamiHandler from "./handler/whoamiHandler/whoamiHandler";
  
 const app: express.Application = express();
 
-const handlers = initAllHandlers();
+// const handlers = initAllHandlers();
 
 app.set("port", process.env.PORT || 8080);
 
-
 // Register GET Handlers
-registerAllGetHandlers(app, handlers)
 
-function registerAllGetHandlers(app: express.Application, handlers: IHandler[]) {
-    handlers.forEach((elem) => {
-        if (shouldRegisterGet(elem)) {
-            console.log("app.ts: register get handler: ", elem.getPath, "handler: ", elem.getHandler)
+app.get(e.getPath, e.getHandler)
 
-            app.get(elem.getPath, elem.getHandler)
-        }
-    });
-}
+
+// registerAllGetHandlers(app, handlers)
+// handlers.forEach((elem) => {
+//     if (shouldRegisterGet(elem)) {
+//         app.get(elem.getPath, elem.getGetHandler())
+        // app.get(elem.getPath, () => {
+        //     console.log("yes")
+        // })
+    // }
+// });
+// function registerAllGetHandlers(app: express.Application, handlers: IHandler[]): express.Application {
+  
+
+//     return app
+// }
 
 function shouldRegisterGet(handler: IHandler) {
     return (handler.getPath && handler.getPath.length > 0 );
 }
 
-function initAllHandlers(): IHandler[] {
-    const handlers: IHandler[] = []
+// function initAllHandlers(): IHandler[] {
+//     const handlers: IHandler[] = []
 
-    handlers.push(new echoHandler)
-    handlers.push(new whoamiHandler)
+//     handlers.push(new echoHandler)
+//     handlers.push(new whoamiHandler)
 
-    return handlers
-}
+//     return handlers
+// }
 
 app.listen(app.get("port"), () => {
     console.log(
@@ -46,6 +52,12 @@ app.listen(app.get("port"), () => {
         app.get("port"),
         app.get("env")
     );
-    console.log("  Press CTRL-C to stop\n");
+console.log(e.getHandler(null, null, null))
+
 })
 
+function delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+}
+
+await delay(1000);

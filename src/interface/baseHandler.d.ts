@@ -1,7 +1,7 @@
 
 import type { RequestHandler } from "express";
 
-declare abstract class IHandler {
+interface IHandler {
     getPath: string
     getHandler: RequestHandler
 }

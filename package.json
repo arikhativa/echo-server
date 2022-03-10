@@ -1,5 +1,6 @@
 {
   "name": "echo-server",
+  "type": "module",
   "version": "1.0.0",
   "description": "echo server example",
   "main": "index.js",
@@ -13,6 +14,7 @@
   },
   "scripts": {
     "test": "test",
+    "tsc": "tsc",
     "lint": "tslint ./tslint.json"
   },
   "repository": {

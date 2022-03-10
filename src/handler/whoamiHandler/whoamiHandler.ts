@@ -1,16 +1,14 @@
 
-import { Request, Response } from "express";
+// import { Request, Response } from "express";
 
-import IHandler from "../../interface/baseHandler";
+// import IHandler from "../../interface/baseHandler";
 
-export default class WhoamiHandler implements IHandler {
-    constructor() {}
+// export default class WhoamiHandler implements IHandler {
+//     getPath: string = "/whoami";
 
-    getPath: string = "/whoami";
+//     public getHandler(_: Request, res: Response): void {
+//         console.log("whoamiHandler.ts: getHandler: ")
 
-    public getHandler(_: Request, res: Response): void {
-        console.log("whoamiHandler.ts: getHandler: ")
-
-        res.send('Echo Server :) \n')
-    }
-}
+//         res.send('Echo Server :) \n')
+//     }
+// }

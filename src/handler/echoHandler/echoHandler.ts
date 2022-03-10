@@ -2,12 +2,13 @@
 import { Request, Response } from "express";
 import IHandler from "../../interface/baseHandler";
 
-export default class EchoHandler implements IHandler {
-    constructor() {}
+const EchoHandler: IHandler = {
+    getPath: "/*",
 
-    getPath: string = "/*";
-
-    public getHandler(req: Request, res: Response): void {
+    getHandler: (req: Request, res: Response): void => {
+        console.log("asd")
         res.send(req.body + "\n")
     }
 }
+
+export default EchoHandler

@@ -1,6 +1,6 @@
 
 all: 
-	tsc
+	npm run tsc
 
 re: all server/run
 
