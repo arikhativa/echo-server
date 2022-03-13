@@ -4,60 +4,40 @@ import express from "express";
 
 import IHandler from "./interface/baseHandler";
 
-import e from "./handler/echoHandler/echoHandler";
-// import whoamiHandler from "./handler/whoamiHandler/whoamiHandler";
- 
-const app: express.Application = express();
+export class Server {
+    app: express.Application;
 
-// const handlers = initAllHandlers();
+    constructor(allHandlers: IHandler[]) {
+        this.app = express();
+        this.app.set("port", process.env.PORT || 8080);
 
-app.set("port", process.env.PORT || 8080);
+        registerAllGetHandlers(this.app, allHandlers)
+    }
 
-// Register GET Handlers
+    public run() {
+        this.app.listen(this.app.get("port"), () => {
+            console.log(
+                "  App is running at http://localhost:%d in %s mode",
+                this.app.get("port"),
+                this.app.get("env")
+            );
+        })
+    }
+}
 
-app.get(e.getPath, e.getHandler)
 
-
-// registerAllGetHandlers(app, handlers)
-// handlers.forEach((elem) => {
-//     if (shouldRegisterGet(elem)) {
-//         app.get(elem.getPath, elem.getGetHandler())
-        // app.get(elem.getPath, () => {
-        //     console.log("yes")
-        // })
-    // }
-// });
-// function registerAllGetHandlers(app: express.Application, handlers: IHandler[]): express.Application {
+function registerAllGetHandlers(app: express.Application, handlers: IHandler[]) {
+    handlers.forEach((elem) => {
+        if (shouldRegisterGet(elem)) {
+            console.log(elem.getPath)
+            app.get(elem.getPath, elem.getHandler)
+        }
+    });
+}
   
-
-//     return app
-// }
 
 function shouldRegisterGet(handler: IHandler) {
     return (handler.getPath && handler.getPath.length > 0 );
 }
 
-// function initAllHandlers(): IHandler[] {
-//     const handlers: IHandler[] = []
-
-//     handlers.push(new echoHandler)
-//     handlers.push(new whoamiHandler)
-
-//     return handlers
-// }
-
-app.listen(app.get("port"), () => {
-    console.log(
-        "  App is running at http://localhost:%d in %s mode",
-        app.get("port"),
-        app.get("env")
-    );
-console.log(e.getHandler(null, null, null))
-
-})
-
-function delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
-}
-
-await delay(1000);
+export default Server

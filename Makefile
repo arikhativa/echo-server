@@ -8,4 +8,4 @@ server/lint:
 	npm run lint
 
 server/run:
-	node ./out/server.js
+	node --experimental-modules --es-module-specifier-resolution=node ./out/index.js
