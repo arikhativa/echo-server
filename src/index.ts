@@ -1,19 +1,11 @@
 
-import express, {Request, Response} from "express";
 
-const app: express.Application = express();
+import initAllHandlers from "./initializer";
+import IHandler from "./interface/baseHandler";
+import Server from "./server";
 
-const path: string = "/*";
+const allHandlers: IHandler[] = initAllHandlers();
 
-app.set("port", process.env.PORT || 8080);
-app.get(path, handler);
+const s = new Server(allHandlers);
 
-app.listen(app.get("port"), () => {
-    console.log("App is running at http://localhost:%d in %s mode", app.get("port"), app.get("env"));
-    }
-);
-
-function handler(req: Request, res: Response): void {
-    console.log("EchoHandler\n");
-    res.send(req.params[0] + "\n");
-}
+s.run();
