@@ -15,7 +15,7 @@
   "scripts": {
     "test": "test",
     "tsc": "tsc",
-    "lint": "tslint ./tslint.json"
+    "lint": "tslint --fix -c ./tslint.json src/**/*.ts"
   },
   "repository": {
     "type": "git",

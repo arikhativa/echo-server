@@ -8,7 +8,12 @@
         "trailing-comma": [ false ],
         "no-any": true,
         "curly": true,
-        "quotemark": [true, "double"]
+        "quotemark": [true, "double"],
+        "no-trailing-whitespace": [true, "always"],
+        "prefer-const": [true, {"destructuring": "any"}],
+        "semicolon": [true, "always"],
+        "space-before-function-paren": [true, "never"],
+        "no-console": false
     },
     "rulesDirectory": []
 }

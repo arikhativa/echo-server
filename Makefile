@@ -1,11 +1,12 @@
 
-all: 
+
+build: lint
 	npm run tsc
 
-re: all server/run
-
-server/lint:
+lint:
 	npm run lint
 
-server/run:
+run:
 	node --experimental-modules --es-module-specifier-resolution=node ./out/index.js
+
+re: build run
