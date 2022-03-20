@@ -5,7 +5,7 @@ import express from "express";
 import IHandler from "./interface/baseHandler";
 
 export class Server {
-    app: express.Application;
+    private app: express.Application;
 
     constructor(allHandlers: IHandler[]) {
         this.app = express();
